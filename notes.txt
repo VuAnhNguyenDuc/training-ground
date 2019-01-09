@@ -1,0 +1,45 @@
+In Javascript, a variable without value will have the value of 'undefined'. The type is also 'undefined'
+
+An empty value has nothing to do with undefined, an empty string has both a legal value and type.
+
+In Javascript, 'null' is 'nothing'. It is supposed to be something that doesn't exist, unfortunately in JS the data type of null is object.
+
+We can emmpty an object be setting it to null or undefined, but if we set the object to null, it's type will still be object.
+
+These are a possible return types of operator 'typeof' : 
+- Primitive Data : string, number, boolean, undefined.
+- Complex Data : function, object. 
+
+There are two ways to access object properties :
+1) objectName.propertyName
+2) objectName["propertyName"]
+
+Do not declare strings, numbers and booleans as object because they complicate your code and slow down execution speed.
+
+There are two methods to search for a specified value within a string and then return the position of the match : indexOf(str,startIndex) and search(str). These two methods are not the same, while indexOf() allow the user to search for a specified value at specified position, it cannot search powerful values that uses regular expression like search()
+
+There are 3 methods for extracting a part of the string :
+- slice(start,end) : extract a part of the string and return the extracted part in a new string. If a parameter is negative, the position is counted from the end of string. If we omit the second parameter, the method will slice out the rest of the string.
+- substring(start,end) : similar to slice but cannot accpept negative indexes.
+- substr(start,length) : similar to slice as well, but the second parameter is the length of the extracted part. If the first parameter is negative, the position counts from the end of string. If we omit the second parameter, it will slice out the rest of string.
+
+To replace the content of a string, we use replace() method. The replace method does not replace the string it calls on but rather return a new string. By default it will replace only the first match and is case sensitive. So to replace case insensitive, we gotta use regular expression (/string/i for normal case insensitive and /string/g for all matches).
+
+All string methods return a new string rather than modify the original string. Strings are immutable, it cannot be changed, only replaced.
+
+There are 3 methods to extract string character :
+- charAt(position) : returns the character at a specified index of a string.
+- charCodeAt(position) : returns the unicode (UTF-16) of the character at a specified index in a string.
+- string[position] : ES5. This method is a little but unpredictable, it makes the string looks like an array (but it's not), if no character is found, [] returns undefined while charAt() returns empty string, and it gives no error but does not work.
+
+(+) operator can be used for both strings and numbers. If there exists a string value in a plus operation, the result will be a string.
+
+Javascript will try to convert string to numeric in all numeric operations.
+I.E : "100"/"10" and "100"*"10" will work, but "100"+"10" will result in 10010 instead of 1000.
+
+If we execute arithmetic operation (i.e involes non-numeric string) will result in a NaN. We can use global Javascript function isNan() to find out whether it's a number.
+
+If we use NaN in mathematical operations, the results will also be NaN. In the case of concatenation, NaN will be treated like a string. Type of NaN is number (well played JS...)
+
+If we divide a number by zero, Infinity (or -Infinity) will be the result.
+
