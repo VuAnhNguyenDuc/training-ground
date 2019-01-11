@@ -1,45 +1,162 @@
-In Javascript, a variable without value will have the value of 'undefined'. The type is also 'undefined'
+1) In Javascript, a variable without value will have the value of 'undefined'. The type is also 'undefined'
 
-An empty value has nothing to do with undefined, an empty string has both a legal value and type.
+2) An empty value has nothing to do with undefined, an empty string has both a legal value and type.
 
-In Javascript, 'null' is 'nothing'. It is supposed to be something that doesn't exist, unfortunately in JS the data type of null is object.
+3) In Javascript, 'null' is 'nothing'. It is supposed to be something that doesn't exist, unfortunately in JS the data type of null is object.
 
-We can emmpty an object be setting it to null or undefined, but if we set the object to null, it's type will still be object.
+4) We can emmpty an object be setting it to null or undefined, but if we set the object to null, it's type will still be object.
 
-These are a possible return types of operator 'typeof' : 
+5) These are a possible return types of operator 'typeof' : 
 - Primitive Data : string, number, boolean, undefined.
 - Complex Data : function, object. 
 
-There are two ways to access object properties :
-1) objectName.propertyName
-2) objectName["propertyName"]
+6) There are two ways to access object properties :
+- objectName.propertyName
+- objectName["propertyName"]
 
-Do not declare strings, numbers and booleans as object because they complicate your code and slow down execution speed.
+7) Do not declare strings, numbers and booleans as object because they complicate your code and slow down execution speed.
 
-There are two methods to search for a specified value within a string and then return the position of the match : indexOf(str,startIndex) and search(str). These two methods are not the same, while indexOf() allow the user to search for a specified value at specified position, it cannot search powerful values that uses regular expression like search()
+8) There are two methods to search for a specified value within a string and then return the position of the match : indexOf(str,startIndex) and search(str). These two methods are not the same, while indexOf() allow the user to search for a specified value at specified position, it cannot search powerful values that uses regular expression like search()
 
-There are 3 methods for extracting a part of the string :
+9) There are 3 methods for extracting a part of the string :
 - slice(start,end) : extract a part of the string and return the extracted part in a new string. If a parameter is negative, the position is counted from the end of string. If we omit the second parameter, the method will slice out the rest of the string.
-- substring(start,end) : similar to slice but cannot accpept negative indexes.
+- substring(start,end) : similar to slice but cannot accept negative indexes.
 - substr(start,length) : similar to slice as well, but the second parameter is the length of the extracted part. If the first parameter is negative, the position counts from the end of string. If we omit the second parameter, it will slice out the rest of string.
 
-To replace the content of a string, we use replace() method. The replace method does not replace the string it calls on but rather return a new string. By default it will replace only the first match and is case sensitive. So to replace case insensitive, we gotta use regular expression (/string/i for normal case insensitive and /string/g for all matches).
+10) To replace the content of a string, we use replace() method. The replace method does not replace the string it calls on but rather return a new string. By default it will replace only the first match and is case sensitive. So to replace case insensitive, we gotta use regular expression (/string/i for normal case insensitive and /string/g for all matches).
 
-All string methods return a new string rather than modify the original string. Strings are immutable, it cannot be changed, only replaced.
+11) All string methods return a new string rather than modify the original string. Strings are immutable, it cannot be changed, only replaced.
 
-There are 3 methods to extract string character :
+12) There are 3 methods to extract string character :
 - charAt(position) : returns the character at a specified index of a string.
 - charCodeAt(position) : returns the unicode (UTF-16) of the character at a specified index in a string.
-- string[position] : ES5. This method is a little but unpredictable, it makes the string looks like an array (but it's not), if no character is found, [] returns undefined while charAt() returns empty string, and it gives no error but does not work.
+- string[position] : ES5. This method is unpredictable, it makes the string looks like an array (but it's not), if no character is found, [] returns undefined while charAt() returns empty string, and it gives no error but does not work.
 
-(+) operator can be used for both strings and numbers. If there exists a string value in a plus operation, the result will be a string.
+14) (+) operator can be used for both strings and numbers. If there exists a string value in a plus operation, the result will be a string.
 
-Javascript will try to convert string to numeric in all numeric operations.
+15) Javascript will try to convert string to numeric in all numeric operations.
 I.E : "100"/"10" and "100"*"10" will work, but "100"+"10" will result in 10010 instead of 1000.
 
-If we execute arithmetic operation (i.e involes non-numeric string) will result in a NaN. We can use global Javascript function isNan() to find out whether it's a number.
+16) If we execute arithmetic operation that invovles non-numeric string will result in a NaN. We can use global Javascript function isNaN() to find out whether it's a number.
 
-If we use NaN in mathematical operations, the results will also be NaN. In the case of concatenation, NaN will be treated like a string. Type of NaN is number (well played JS...)
+17) If we use NaN in mathematical operations, the results will also be NaN. In the case of concatenation, NaN will be treated like a string. Type of NaN is number (well played JS...)
 
-If we divide a number by zero, Infinity (or -Infinity) will be the result.
+18) If we divide a number by zero, Infinity (or -Infinity) will be the result.
+
+19) In Javascript, arrays use numbered indexes while objects use named indexes. Array is a special case of object that uses numbered indexes
+Example : arr[0] and obj["firstName"]
+
+20) We should use objects when we want the element name to be strings, and arrays when we want the element names to be number.
+
+21) There is no need for array (or object) contructor, because it will make the program slow and is pointless, besides contructor will cause unexpected results.
+
+For example : 
+var arr = new Array(40) //will create an array with 40 undefined elements
+var arr = new Array(40,60) // will create an array with two elements 40 and 60
+
+22) To know if a variable is an array (since it's type is object), in ES5 there is a new method : Array.isArray(), or we can use the method 'instanceof Array'.
+
+23) Array methods : 
+- toString() : converts an array to a string of comma seperated array values.
+- join() : behaves just like toString(), but we can specify the separators.
+    Ex : var arr = ["a","b","c"]; arr.join(" * "); // will result in a * b * c
+- pop() : pop an element out of an array (last position)
+- push() : push an element into the array (last position)
+- shift() : remove the first element and shift every other elements one position left, will return the string that was shifted out.
+- unshift(newElement) : adds a new element to an array at the beginning and shift every other elements one position right, will return the new length of the array.
+- delete(index) : delete an element at given index of array, that index will become undefined.
+    Ex : var arr = ["a","b","c"]; delete var[0]; // will change var[0] to undefined.
+- splice() : add new items to array, will return the new array.
+    Ex : var arr = ["a","b","c","d"];
+         arr.splice(2,0,"e","f"); // will result in a,b,e,f,c,d
+    The first parameter (2) defines the position where new elements should be added (spliced in)
+    The second parameter (0) defines how many elements should be removed
+    The rest of the parameters ("e","f") define the new elements to be added
+(*) We can use splice to safely remove elements without leaving "holes" in the array.
+    Ex : var arr = ["a","b","c","d"];
+         arr.splice(0,1); // will remove the first element.
+- concat(arr1,arr2,...) : concatenating two (or more) arrays, will return a new array, all input array is unchanged. concat() method can also take values as argument (i.e concat(["a","b"])).
+- slice(startIndex,endIndex) : slice out a piece of array and return it as a new one. If endIndex is not provided, slice will cut to the end of the array.
+- sort() : sort an array alphabetically (will not work for numbers without proper comparator)
+    Ex : var points = [40,100,1,5,3,2];
+         points.sort(function (a,b) {return a - b;}) // or a < b ? -1 : 1;
+- reverse() : reverse elements in the array.
+
+24) JS automatically converts an array to comma seperated string values when a primitive value is expected. For example, innerHTML = arr.toString() and innerHTML = arr will have the same result.
+
+25) Array Iteration methods : 
+- forEach() : use to iterate through an array.
+    Ex : var numbers = [1,2,3,4];
+         numbers.forEach(myFunction);
+
+         function myFunction(value,index,arr) {
+             console.log(value);
+         }
+- map() : create a new array out of an old one and a calculation. map() does not execute the function for array without values.
+    Ex : var number1 = [1,2,3];
+         var number2 = number1.map(myFunction);
+
+         function myFunction(value,index,array) {
+            return value * 2;
+         }
+- filter() : filter array elements that satisfy a condition, return satisfied elements as array.
+    Ex : var age = [10,18,20];
+         var over18 = age.filter(myFunction);
+
+         function myFunction(value, index, array) {
+             return value > 18;
+         }
+- reduce() : calculate a single value out of an array,reduce() does not change the original array.
+    Ex : var num = [1,2,3,4,5];
+         var sum = num.reduce(myFunction); // return total sum of the array.
+
+         function myFunction(total, value, index, array) {
+             return total + value;
+         }
+- reduceRight() : works same as reduce() but iterate from right to left.
+- every() : check if every element of array satisfy a condition. Returns boolean.
+- some() : check if some element of array passes a test. Returns boolean.
+- indexOf() : searches an array for element value and return it's position. Return int, will return -1 incase element is not found. There's an optional start parameter that specifies the starting position of where to search.
+- lastIndexOf() : similar to indexOf(), but starts from the end of array and traverse left.
+- find() : return the value of the first element that passes a condition.
+    Ex : var num = [1,2,3,4,5];
+         var first = number.find(myFunction); // will return 5
+
+         function myFunction(value,index,array) {
+             return value > 4;
+         }
+- findIndex() : similar to find() but return the index.
+
+26) When comparing values of different types, Javascript will try to convert string to number and do the comparison. An empty string converts to 0, a non-numeric string converts to NaN (which is always false).
+
+27) If we assign a value to a variable that has not been declared, it will automatically become a global variable (except in Strict Mode).
+
+28) In Javascript, a variable can be declared after it has been used. This is because of Javascript's default behavior of moving all declerations to the top of the current scope (top of the script or function). This is called 'hoisting', and will not work in Strict mode.
+    Ex : x = 5;
+         console.log(x);
+         var x; // will work
+
+29) Variables and contants declared with 'let' and 'const' are not hoisted!
+
+30) Javascript only hoists declarations, not initilizations.
+    Ex : var x = 5;
+         var y = 7;
+         console.log(x + " " + y); // will print out 5 7
+
+    Ex : var x = 5;
+         console.log(x + " " + y); // will print out 5 undefined
+         var y = 7;
+
+31) Reasons to use strict mode : 
+- Makes it easier to write "secure" Javascript.
+- Changes previously accepted "bad syntax" to real errors.
+- It will be impossible to create an unwanted global variable (variables that is initilized but not declared).
+- In normal script, a developer will not receive any error feedback assigning values to non-writable properties.
+- In strict mode, any assignment to a non-writable,getter-only,non-existing variable, property or object will throw an error.
+
+32) What is not allowed in strict mode :
+- Using / deleting a variable or object without declaring it.
+- Deleting
+
+
 
