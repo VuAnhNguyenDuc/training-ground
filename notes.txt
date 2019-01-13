@@ -156,7 +156,20 @@ var arr = new Array(40,60) // will create an array with two elements 40 and 60
 
 32) What is not allowed in strict mode :
 - Using / deleting a variable or object without declaring it.
-- Deleting
+- Deleting a function.
+- Duplicate parameters.
+- Octal numeric literals (Ex: var x = 010;).
+- Octal escape characters (Ex: var x = "\010").
+- Writing to read-only/get-only property.
+- Delete an undeletable property (Ex: delete Object.prototype;).
+- 'eval' cannot be used as a variable.
+- 'arguments' cannot be used as a variable.
+- 'with' statement is not allowed.
+- eval() is not allowed to create variable in the scope from which it was called.
+	Ex : eval("var x = 2");
+		 alert(x);	// will cause an error.
+- keywords are not allowed to be used as variable name.
 
+33) The "use strict" directive is only recognized at the beginning of a script or a function.
 
-
+34) The Javascript 
