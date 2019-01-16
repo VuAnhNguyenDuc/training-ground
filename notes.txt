@@ -172,4 +172,56 @@ var arr = new Array(40,60) // will create an array with two elements 40 and 60
 
 33) The "use strict" directive is only recognized at the beginning of a script or a function.
 
-34) The Javascript 
+34) The Javascript 'this' keyword refers to the object it belongs to.
+- In a method, 'this' refers to the owner object.
+- Alone, 'this' refers to the global object. (object Window)
+- In a function, 'this' refers to the global object. (object Window)
+- In a function AND in 'strict' mode, 'this' refers to 'undefined'.
+- In an event, 'this' refers to the element that received the event.
+- Methods like call() or apply() can refer 'this' to any object.
+	Ex : 
+	var person1 = {
+		fullName : function() {
+			return this.firstName + " " + this.lastName;
+		}
+	}
+	var person2 = {
+		firstName : "John",
+		lastName : "Doe"
+	}
+	person1.fullName.call(person2); // will return "John Doe"
+
+
+35) Global variables defined with the 'var' keyword belong to the window object while the 'let' does not.
+	Ex : var carName = 'abc'; // window.carName is available
+		 let carName = 'abc'; // window.carName is not available
+
+36) Redeclaring a variable with 'var' is allowed anywhere in a program. Redeclaring a 'var' with 'let' in the same scope or block is not allowed.
+	Ex : var x = 2;
+		 var x = 3; // now x is 3
+	 	 {
+	 	 	var x = 2;
+		 	let x = 3; // not allowed
+	 	 }
+
+37) Redeclaring a 'let' variable with 'let' or 'var' in the same scope or block is not allowed.
+
+38) Redeclaring a variable with 'let' in another scope or block is allowed.
+
+39) Variable declared with 'var' are hoisted to the top, while 'let' are not. Using 'let' variable before it is declared will result in a ReferenceError.
+
+40) Constants in Javascript is similar to let, but you have to assign it value at the moment of it's declaration. And the value of contant cannot be changed, but we can change the value of it's properties or add new properties (in the case the constant is an object).
+
+41) We can also change or add elements of constant arrays, but cannot reassign it.
+
+42) If a function is called with a missing argument, the value of the missing argument is set to 'undefined' => can break our code.
+	Ex : 
+	function myFunction(x,y) {
+		if (y == undefined) {
+			y = 0;
+		}
+		return x * y;
+	}
+	myFunction(4); // will return 0
+
+
